@@ -16,6 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "annonce")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AnnonceController {
     private final AnnonceService annonceService;
 
