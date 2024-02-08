@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConnexPostgres {
     public Connection getConnex() {
-        String url = "jdbc:postgresql://localhost:5432/vente_vehicule";
+        String url = "jdbc:postgresql://F1-ddde2dfdd6DC1dbe-1dFCf3C*abbB:22051/railway";
         String username = "postgres";
-        String password = "root";
+        String password = "F1-ddde2dfdd6DC1dbe-1dFCf3C*abbB";
 
         Connection connection = null;
         try {
