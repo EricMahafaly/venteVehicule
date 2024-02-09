@@ -23,7 +23,8 @@ public class AnnonceService {
         this.annonceRepository.save(annonce);
         int idAnnonce = new Request().getLastIdAnnonce();
         String url = this.fileService.upload(file);
-        new Request().insertPhotos(idAnnonce, url);
+        //new Request().insertPhotos(idAnnonce, url);
+        System.out.println("====================" + url);
     }
 
     public List<Annonce> findAll() {
