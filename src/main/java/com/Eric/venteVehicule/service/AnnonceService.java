@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,13 +22,8 @@ public class AnnonceService {
         annonce.setUtilisateur(utilisateur);
         this.annonceRepository.save(annonce);
         int idAnnonce = new Request().getLastIdAnnonce();
-        String path;
-        try {
-            path = this.fileService.saveFile(file);
-            new Request().insertPhotos(idAnnonce, path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String url = this.fileService.upload(file);
+        new Request().insertPhotos(idAnnonce, url);
     }
 
     public List<Annonce> findAll() {
