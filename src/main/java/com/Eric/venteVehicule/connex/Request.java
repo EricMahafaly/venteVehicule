@@ -199,7 +199,7 @@ public class Request {
     public void insertPhotos(int idAnnonce, String pathFile) {
         Connection connection = this.connexPostgres.getConnex();
         try {
-            String sql = String.format("INSERT INTO photo_annonce VALUES (DEFAULT, %s, %d)", pathFile, idAnnonce);
+            String sql = String.format("INSERT INTO photo_annonce VALUES (DEFAULT, '%s', %d)", pathFile, idAnnonce);
             Statement statement = connection.createStatement();
             statement.execute(sql);
             connection.close();
