@@ -18,7 +18,7 @@ import static org.springframework.http.MediaType.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "annonce")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://192.168.43.184:3000")
 public class AnnonceController {
     private final AnnonceService annonceService;
 
