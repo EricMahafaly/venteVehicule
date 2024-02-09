@@ -19,7 +19,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @AllArgsConstructor
 @RestController
 @RequestMapping(consumes = APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "http://192.168.43.184:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UtilisateurController {
     private AuthenticationManager authenticationManager;
     private UtilisateurService utilisateurService;
