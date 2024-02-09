@@ -208,4 +208,22 @@ public class Request {
         }
     }
 
+    public List<String> findUrlPhotos(int idAnnonce) {
+        List<String> allUrlImage = new ArrayList<>();
+        Connection connection = this.connexPostgres.getConnex();
+        try {
+            String sql = String.format("SELECT chemin FROM photo_annonce WHERE id_annonce = %d", idAnnonce);
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery(sql);
+            while(res.next()) {
+                allUrlImage.add(res.getString("chemin"));
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return allUrlImage;
+    }
+
 }

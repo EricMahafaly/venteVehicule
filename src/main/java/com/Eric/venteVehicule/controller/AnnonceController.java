@@ -47,6 +47,11 @@ public class AnnonceController {
         return this.annonceService.findAllFavoris();
     }
 
+    @GetMapping(path = "{idAnnonce}/image")
+    public List<String> findAllImageUrl(@PathVariable int idAnnonce) {
+        return this.annonceService.findAllImageUrl(idAnnonce);
+    }
+
     @GetMapping(path = "recherche/date")
     public List<Annonce> researchByDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return this.annonceService.researchByDate(date.toString());

@@ -49,6 +49,10 @@ public class AnnonceService {
         return new Request().findAllFavoris(utilisateur);
     }
 
+    public List<String> findAllImageUrl(int idAnnonce) {
+        return new Request().findUrlPhotos(idAnnonce);
+    }
+
     public List<Annonce> researchByDate(String date) {
         return new Request().researchByDate(date);
     }
@@ -64,4 +68,6 @@ public class AnnonceService {
     public List<Annonce> researchByModele(String modele) {
         return new Request().researchByModele(modele);
     }
+
+
 }
