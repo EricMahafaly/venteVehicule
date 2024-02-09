@@ -17,14 +17,16 @@ public class AnnonceService {
     private final AnnonceRepository annonceRepository;
     private FileService fileService;
 
-    public void creeAnnonce(Annonce annonce, MultipartFile file) {
+    public void creeAnnonce(Annonce annonce, MultipartFile[] file) {
         Utilisateur utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         annonce.setUtilisateur(utilisateur);
         this.annonceRepository.save(annonce);
         int idAnnonce = new Request().getLastIdAnnonce();
-        String url = this.fileService.upload(file);
-        new Request().insertPhotos(idAnnonce, url);
-        System.out.println("====================" + url);
+        String url;
+        for(int i = 0; i< file.length; i++) {
+            url = this.fileService.upload(file[i]);
+            new Request().insertPhotos(idAnnonce, url);
+        }
     }
 
     public List<Annonce> findAll() {

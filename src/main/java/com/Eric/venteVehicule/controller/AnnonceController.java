@@ -23,7 +23,7 @@ public class AnnonceController {
     private final AnnonceService annonceService;
 
     @PostMapping(consumes = {APPLICATION_JSON_VALUE, MULTIPART_FORM_DATA_VALUE, APPLICATION_OCTET_STREAM_VALUE})
-    public void creeAnnonce(@RequestPart Annonce annonce, @RequestParam("file") MultipartFile file) {
+    public void creeAnnonce(@RequestPart Annonce annonce, @RequestParam("file") MultipartFile[] file) {
         this.annonceService.creeAnnonce(annonce, file);
     }
 
