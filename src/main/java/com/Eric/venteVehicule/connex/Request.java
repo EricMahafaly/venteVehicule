@@ -178,4 +178,34 @@ public class Request {
         return allAnnonce;
     }
 
+    public int getLastIdAnnonce() {
+        int value =0;
+        Connection connection = this.connexPostgres.getConnex();
+        try {
+            String sql = "select max(id_annonce) from annonce";
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery(sql);
+            while(res.next()) {
+                value = res.getInt(1);
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
+    public void insertPhotos(int idAnnonce, String pathFile) {
+        Connection connection = this.connexPostgres.getConnex();
+        try {
+            String sql = String.format("INSERT INTO photo_annonce VALUES (DEFAULT, %s, %d)", pathFile, idAnnonce);
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

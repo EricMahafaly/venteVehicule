@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,8 +23,8 @@ public class AnnonceController {
     private final AnnonceService annonceService;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public void creeAnnonce(@RequestBody Annonce annonce) {
-        this.annonceService.creeAnnonce(annonce);
+    public void creeAnnonce(@RequestBody Annonce annonce, @RequestParam("file") MultipartFile file) {
+        this.annonceService.creeAnnonce(annonce, file);
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
