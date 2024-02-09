@@ -12,8 +12,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
+import static org.springframework.http.MediaType.*;
 
 @Slf4j
 @AllArgsConstructor
@@ -23,7 +22,7 @@ import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 public class AnnonceController {
     private final AnnonceService annonceService;
 
-    @PostMapping(consumes = {APPLICATION_JSON_VALUE, MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(consumes = {APPLICATION_JSON_VALUE, MULTIPART_FORM_DATA_VALUE, APPLICATION_OCTET_STREAM_VALUE})
     public void creeAnnonce(@RequestBody Annonce annonce, @RequestParam("file") MultipartFile file) {
         this.annonceService.creeAnnonce(annonce, file);
     }
