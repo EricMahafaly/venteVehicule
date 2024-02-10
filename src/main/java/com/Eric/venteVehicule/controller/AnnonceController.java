@@ -47,7 +47,7 @@ public class AnnonceController {
         return this.annonceService.findAllFavoris();
     }
 
-    @GetMapping(path = "{idAnnonce}/image")
+    @GetMapping(path = "image/{idAnnonce}")
     public List<String> findAllImageUrl(@PathVariable int idAnnonce) {
         return this.annonceService.findAllImageUrl(idAnnonce);
     }
