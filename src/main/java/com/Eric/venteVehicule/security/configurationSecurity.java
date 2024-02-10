@@ -43,7 +43,7 @@ public class configurationSecurity {
                                                 .requestMatchers(POST, "/connexion").permitAll()
                                                 .requestMatchers(GET, "/annonce").permitAll()
                                                 .requestMatchers(GET, "/annonce/recherche/**").permitAll()
-                                                .requestMatchers(GET, "/annonce/image/**").permitAll()
+                                                .requestMatchers(GET, "/annonce/image").permitAll()
                                                 .anyRequest().authenticated()
                         )
                         .sessionManagement(httpSecuritySessionManagementConfigurer ->

@@ -1,6 +1,7 @@
 package com.Eric.venteVehicule.controller;
 
 import com.Eric.venteVehicule.model.Annonce;
+import com.Eric.venteVehicule.model.Img;
 import com.Eric.venteVehicule.service.AnnonceService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +48,9 @@ public class AnnonceController {
         return this.annonceService.findAllFavoris();
     }
 
-    @GetMapping(path = "image/{idAnnonce}")
-    public List<String> findAllImageUrl(@PathVariable int idAnnonce) {
-        return this.annonceService.findAllImageUrl(idAnnonce);
+    @GetMapping(path = "image")
+    public List<Img> findAllImageUrl() {
+        return this.annonceService.findAllImageUrl();
     }
 
     @GetMapping(path = "recherche/date")

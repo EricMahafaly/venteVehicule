@@ -1,6 +1,7 @@
 package com.Eric.venteVehicule.connex;
 
 import com.Eric.venteVehicule.model.Annonce;
+import com.Eric.venteVehicule.model.Img;
 import com.Eric.venteVehicule.model.Utilisateur;
 import com.Eric.venteVehicule.service.UtilisateurService;
 
@@ -208,22 +209,25 @@ public class Request {
         }
     }
 
-    public List<String> findUrlPhotos(int idAnnonce) {
-        List<String> allUrlImage = new ArrayList<>();
+    public List<Img> findUrlPhotos() {
+        List<Img> allImage = new ArrayList<>();
         Connection connection = this.connexPostgres.getConnex();
         try {
-            String sql = String.format("SELECT chemin FROM photo_annonce WHERE id_annonce = %d", idAnnonce);
+            String sql = String.format("SELECT * FROM photo_annonce");
             Statement statement = connection.createStatement();
             ResultSet res = statement.executeQuery(sql);
             while(res.next()) {
-                allUrlImage.add(res.getString("chemin"));
+                Img img = new Img();
+                img.setUrl(res.getString("chemin"));
+                img.setIdAnnonce(res.getInt("id_annonce"));
+                allImage.add(img);
             }
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return allUrlImage;
+        return allImage;
     }
 
 }

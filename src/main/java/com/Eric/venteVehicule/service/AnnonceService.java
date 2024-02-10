@@ -2,6 +2,7 @@ package com.Eric.venteVehicule.service;
 
 import com.Eric.venteVehicule.connex.Request;
 import com.Eric.venteVehicule.model.Annonce;
+import com.Eric.venteVehicule.model.Img;
 import com.Eric.venteVehicule.model.Utilisateur;
 import com.Eric.venteVehicule.repository.AnnonceRepository;
 import lombok.AllArgsConstructor;
@@ -49,8 +50,8 @@ public class AnnonceService {
         return new Request().findAllFavoris(utilisateur);
     }
 
-    public List<String> findAllImageUrl(int idAnnonce) {
-        return new Request().findUrlPhotos(idAnnonce);
+    public List<Img> findAllImageUrl() {
+        return new Request().findUrlPhotos();
     }
 
     public List<Annonce> researchByDate(String date) {
